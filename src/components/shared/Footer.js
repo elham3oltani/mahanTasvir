@@ -16,7 +16,6 @@ import { ProductsContext } from "../../context/ProductContextProvider";
 const Footer = () => {
   const products = useContext(ProductsContext);
   const NavItem = products[2];
-  console.log(NavItem);
   return (
     <>
       <div className="w-full grid lg:flex justify-evenly lg:flex-row-reverse text-white bg-black-50 lg:h-[290px] h-auto">

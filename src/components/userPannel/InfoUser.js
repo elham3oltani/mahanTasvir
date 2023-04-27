@@ -28,25 +28,7 @@ const InfoUser = () => {
     };
     infoHandler();
   }, []);
-  const infoHandler = async () => {
-    if (localStorage.getItem("isActive")) {
-      try {
-        const {
-          data: [name, email, phone],
-        } = await axios.get("https://mahantasvir.ir/edit-profile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
 
-        setEmail(email);
-        setName(name);
-        setPhone(phone);
-      } catch (error) {
-        console.log(error.data);
-      }
-    }
-  };
   console.log(InfoUser);
   return (
     <div className="lg:w-5/6 w-full mx-auto">

@@ -15,8 +15,7 @@ const UserPannel = () => {
   const navigate = useNavigate();
 
 useEffect(()=>{
-  const dashboardHandler = async (e) => {
-    e.preventDefault();
+  const dashboardHandler = async () => {
     if (localStorage.getItem("isActive")) {
       try {
         const res = await axios.get("https://mahantasvir.ir/panel/user", {
@@ -48,7 +47,7 @@ useEffect(()=>{
               <FaUser />
               <h3 className="px-1 font-Quicksand mr-1.5">
                 {" "}
-                {JSON.parse(userName)}
+                {JSON.parse(userName) ? JSON.parse(userName) : <p className="text-sm">نام کاربری</p> }
               </h3>
             </div>
             <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:flex flex-col text-sm">

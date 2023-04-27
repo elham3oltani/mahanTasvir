@@ -163,9 +163,7 @@ const SignUp = () => {
                   size={22}
                   className="text-silver ml-4 mr-2 align-middle text-right"
                 />
-                {/* <label className="block text-[14px] font-bold text-right my-1.5 mr-4">
-                رمز عبور خود را وارد کنید
-              </label> */}
+
                 <input
                   onChange={(e) => setPassword(e.target.value)}
                   name="password"
@@ -189,9 +187,6 @@ const SignUp = () => {
             </div>
 
             <div className="flex w-full items-center my-6 border border-orange-600 rounded-full">
-              {/* <label className="block text-right text-[14px] font-bold my-1.5 mr-4">
-                رمز عبور خود را تکرار کنید
-              </label> */}
               <GiConfirmed
                 size={22}
                 className="text-silver ml-4 mr-2 align-middle text-right"

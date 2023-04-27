@@ -55,7 +55,7 @@ const Brands = () => {
               <SwiperSlide key={item.id} className="my-4 mx-auto">
                 <img
                   src={item.files}
-                  alt="dlink"
+                  alt={item.id}
                   className="w-[150] h-[120px] mx-auto object-fill"
                 />
               </SwiperSlide>

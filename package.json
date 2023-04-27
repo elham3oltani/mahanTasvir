@@ -1,5 +1,6 @@
 {
-  "name": "binaGostar",
+  "name": "binaelectronic",
+  "homepage":"https://mahantasvir.ir",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +16,6 @@
     "react-carousel-minimal": "^1.4.1",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
-    "react-dropdown": "^1.11.0",
     "react-icons": "^4.7.1",
     "react-items-carousel": "^2.8.0",
     "react-leaflet-curve": "^2.0.1",

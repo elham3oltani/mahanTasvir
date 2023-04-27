@@ -33,14 +33,7 @@ const quantityCountSuggest = (state, id) => {
   }
 };
 
-const quantityCountProduct = (state, id) => {
-  const index = state.selectedItemsProduct.findIndex((item) => item.id === id);
-  if (index === -1) {
-    return false;
-  } else {
-    return state.selectedItemsProduct[index].quantity;
-  }
-};
+
 
 const quantityCountAccesso = (state, id) => {
     const index = state.selectedItemsAccesso.findIndex((item) => item.id === id);

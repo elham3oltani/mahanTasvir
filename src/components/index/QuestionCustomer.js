@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/zoom";
 import "swiper/css";
 import "../../App.css";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 import { Pagination, A11y, Navigation } from "swiper";
 import "swiper/css";
 
@@ -46,12 +46,11 @@ const QuestionCustomer = () => {
               slidesPerView: 3,
             },
           }}
-         navigation={true}
+          navigation={true}
           scrollbar={{ draggable: true }}
           zoom={true}
           spaceBetween={30}
           slidesPerView={4}
-         
         >
           <SwiperSlide className=" border-black border w-max-[275px] rounded-lg hover:shadow-2xl mb-8">
             <div className="duration-150 delay-150 ">
@@ -79,20 +78,7 @@ const QuestionCustomer = () => {
             </div>
           </SwiperSlide>
 
-
           <SwiperSlide className=" border-silver border w-max-[275px] rounded-lg hover:shadow-2xl mb-8">
-            <div className="duration-150 delay-150 transition">
-              <img
-                src="https://www.usnews.com/object/image/00000178-69d4-d5d0-adfc-fbfea21b0000/210325-securitycameras-mainimage2-stock.jpg?update-time=1616683297657&size=responsiveFlow640"
-                alt="cctv camera"
-                className="w-full h-full mx-auto rounded-md transition duration-150 delay-150 hover:opacity-50"
-              />
-              <p className="font-Quicksand mx-3 my-3 text-center">
-                دوربین مناسب برای خونه
-              </p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className=" border-silver border w-max-[275px] rounded-lg hover:shadow-2xl mb-14">
             <div className="duration-150 delay-150 transition">
               <img
                 src="https://www.usnews.com/object/image/00000178-69d4-d5d0-adfc-fbfea21b0000/210325-securitycameras-mainimage2-stock.jpg?update-time=1616683297657&size=responsiveFlow640"

@@ -119,14 +119,11 @@ const Login = () => {
               </div>
             </form>
           </>
-        ) : (
+        ) : [] (
           <>
             <p className="text-green-500 text-md">
               ورود به سایت با موفقیت انجام شد
             </p>
-            {/* <button className="text-black" onClickCapture={logout}>
-              خروج
-            </button> */}
           </>
         )}
       </div>

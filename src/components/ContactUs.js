@@ -11,10 +11,7 @@ const ContactUs = () => {
     <>
       <Navbar />
       <div className="lg:w-4/5 w-full lg:mx-auto my-8 h-auto">
-        {/* <div className="relative">
-                <img src={banner} className="h-[500px] w-full object-cover" />
-               <h1 className=' absolute z-10 text-red top-[50%] right-0'>ارتباط با ما</h1>
-            </div> */}
+
         <h1 className="border-b-2 border-orange-500 text-lg mt-20 lg:mt-10 mb-8 w-56 text-black py-2 text-center mx-auto ">
           خدمات ارتباطی
         </h1>
@@ -44,7 +41,7 @@ const ContactUs = () => {
       <div className="my-10 mx-auto w-full lg:w-4/5 text-black ">
         <div className="flex-col flex  lg:flex-row-reverse items-center">
           <div>
-            <img src={location} className="w-[180px] h-[180px]" />
+            <img src={location} alt="location" className="w-[180px] h-[180px]" />
           </div>
           <div className="flex-col items-center ">
             <div className="flex my-4 lg:justify-end justify-center items-center">

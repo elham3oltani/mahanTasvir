@@ -40,13 +40,14 @@ const SliderBanner = () => {
             <div className="w-full" key={banner.id}>
               <img
                 key={banners.id}
+                alt={banner.name}
                 src={banner.files}
                 className="w-full md:h-[600px] xl:h-[600px] lg:h-[600px] h-[250px] object-cover"
               />
             </div>
           ))
         ) : (
-          <p>null</p>
+          []
         )}
       </Carousel>
     </>

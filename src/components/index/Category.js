@@ -18,7 +18,7 @@ const Category = () => {
             to={`/product/${navItems.slug}`}
             className="cursor-pointer flex flex-col items-center my-3"
           >
-            <img src={navItems.files} className="w-[70px] h-[65px]" />
+            <img src={navItems.files} alt={navItems.title} className="w-[70px] h-[65px]" />
             <span className="text-sm  text-blue-300 my-2 py-0.5 px-2 rounded-sm">
               {navItems.title}
             </span>

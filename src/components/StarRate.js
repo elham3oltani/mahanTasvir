@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { AiFillStar } from "react-icons/ai";
 
 const Rate = ({ count, rating, color, onRating }) => {
-  const [hoverRating, setHoverRating] = useState(2);
+  const [hoverRating, setHoverRating] = useState(0);
 
   const getColor = (index) => {
     if (hoverRating >= index) {
@@ -11,8 +11,10 @@ const Rate = ({ count, rating, color, onRating }) => {
     } else if (!hoverRating && rating >= index) {
       return color.filled;
     }
+
     return color.unfilled;
   };
+
   const starRating = useMemo(() => {
     return Array(count)
       .fill(0)
@@ -26,7 +28,7 @@ const Rate = ({ count, rating, color, onRating }) => {
           style={{ color: getColor(idx) }}
           onMouseEnter={() => setHoverRating(idx)}
           onMouseLeave={() => setHoverRating(0)}
-          size={18}
+          size={20}
         />
       ));
   }, [count, rating, hoverRating]);

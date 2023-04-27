@@ -163,7 +163,6 @@ const SuggestedProducts = () => {
             ))
           ) : (
             <ImSpinner6 size={30} className="animate-spin mx-auto" />
-
           )}
         
         </Swiper>

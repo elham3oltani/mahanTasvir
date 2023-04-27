@@ -16,7 +16,6 @@ const Navbar = ({ styleOnBanner }) => {
   const [pannel, setPannel] = useState(false);
   let { state } = useContext(CartContext);
   const { pathname } = useLocation();
-  const token = localStorage.getItem("token");
   const handlepannel = () => {
     setPannel(!pannel);
   };
@@ -104,7 +103,7 @@ const Navbar = ({ styleOnBanner }) => {
             <div className="relative">
               <div className="absolute z-20 mt-4 -right-6">
                 {pannel ? (
-                  <ul className="px-2 mt-5 text-black py-2 bg-white rounded-md p-3 shadow-lg">
+                  <ul className="px-2 mt-6 text-black py-2 bg-white rounded-md p-3 shadow-lg">
                     <li className="w-32 py-1.5 bg-white items-center my-1  border-orange-500 transition-all duration-200 ease-in-out rounded-md shadow-orange-500 hover:drop-shadow-lg">
                       <Link
                         to="/my-account/info-account"
@@ -112,7 +111,7 @@ const Navbar = ({ styleOnBanner }) => {
                       >
                         <IoIosArrowBack />
                         <span className="mr-1.5 font-Quicksand text-[16px] truncate">
-                          {JSON.parse(userName)}
+                          {JSON.parse(userName) ? JSON.parse(userName) : <p className="text-sm">نام کاربری</p> } 
                         </span>
                       </Link>
                     </li>
@@ -150,7 +149,9 @@ const Navbar = ({ styleOnBanner }) => {
                       </button>
                     </li>
                   </ul>
-                ) : null}
+                ) : (
+                  []
+                )}
               </div>
             </div>
           </div>
@@ -163,21 +164,22 @@ const Navbar = ({ styleOnBanner }) => {
               <li className="mx-4">
                 <Link to="/contact-us">تماس با ما</Link>
               </li>
-              {navbarItems ? (
-                navbarItems.map((items) => (
-                  <li className="mx-4" key={items.id}>
-                    <Link to={`/product/${items.slug}`} className="">
-                      {items.title}
-                    </Link>
-                  </li>
-                ))
-              ) : (
+              {navbarItems
+                ? navbarItems.map((items) => (
+                    <li className="mx-4" key={items.id}>
+                      <Link to={`/product/${items.slug}`} className="">
+                        {items.title}
+                      </Link>
+                    </li>
+                  ))
+                : 
                 <ImSpinner6 size={30} className="animate-spin mx-auto" />
-              )}
+
+                }
             </ul>
           </div>
           <div className="text-orange-500 hidden lg:flex">
-            <img src={logoo} className="w-[60px] h-[60px]" />
+            <img src={logoo} alt="logo" className="w-[60px] h-[60px]" />
           </div>
         </div>
       </div>
@@ -198,7 +200,7 @@ const Navbar = ({ styleOnBanner }) => {
           <HiMenu size={30} className="text-blue-200" onClick={handleNavbar} />
         </div>
         <div>
-          <img src={logoo} className="w-[50px] h-[50px]" />
+          <img src={logoo} alt="logo" className="w-[50px] h-[50px]" />
         </div>
         {localStorage.getItem("token") === null ? (
           <div className=" rounded-md flex items-center text-blue-200 ml-3">
@@ -226,22 +228,23 @@ const Navbar = ({ styleOnBanner }) => {
           }
         >
           <div className="border-b-2 flex justify-center border-orange-500 mx-2">
-            <img src={logoo} className="w-[70px] h-[70px]" />
+            <h1 className="text-blue-500 py-3 font-bold">ماهان تصویر</h1>
           </div>
           <nav className="">
-            <ul className="flex flex-col relative text-right top-2">
-              {navbarItems ? (
-                navbarItems.map((item) => (
-                  <li
-                    key={item.id}
-                    className="my-2 flex items-center justify-end ease-in-out duration-200 delay-100 hover:shadow-lg py-1.5 mx-2 rounded-md px-1"
-                  >
-                    <Link to={`/product/${item.slug}`}>{item.title}</Link>
-                  </li>
-                ))
-              ) : (
-                <p>null</p>
-              )}
+            <ul className="flex flex-col relative text-right top-1">
+              {navbarItems
+                ? navbarItems.map((item) => (
+                    <li
+                      key={item.id}
+                      className="my-2 flex items-center justify-end ease-in-out duration-200 delay-100 hover:shadow-lg py-1.5 mx-2 rounded-md px-1"
+                    >
+                      <Link to={`/product/${item.slug}`}>{item.title}</Link>
+                    </li>
+                  ))
+                : 
+                <ImSpinner6 size={30} className="animate-spin mx-auto" />
+
+                }
 
               <li className="flex items-center justify-end my-2  ease-in-out duration-200 delay-100 hover:shadow-lg py-1.5 mx-2 rounded-md px-1">
                 <Link to="/AboutUs">درباره ما</Link>

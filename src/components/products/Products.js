@@ -22,14 +22,11 @@ const Products = () => {
   const [modelFilter, setModelFilter] = useState(undefined);
   const [brandFilter, setBrandFilter] = useState(undefined);
 
-  console.log(filter);
-  console.log(filterBrand);
   const deletedFilterHandler = () => {
     return setModelFilter(undefined), setBrandFilter(undefined);
   };
   console.log(modelFilter);
   console.log(brandFilter);
-  //console.log([...searchParams]);
   useEffect(() => {
     const getCategory = async () => {
       const { data } = await axios.get(
@@ -41,7 +38,6 @@ const Products = () => {
           },
         }
       );
-      // console.log(data);
       setProducts(data[0]);
       setFilter(data[1]);
       setFilterBrand(data[2]);
@@ -86,7 +82,7 @@ const Products = () => {
                     className="lg:w-[200px] lg:h-[190px] md:w-[180px] md:h-[180px] w-[100px] h-[100px] mx-auto my-3"
                   />
                   <p className="truncate text-sm mobile:text-[12px] mx-3 font-sans  my-2 md:mb-4 lg:mb-4">
-                    Analog CCTV Camera HD 1080P 4-in-1
+                    {item?.name}
                   </p>
                   <div className="flex-col justify-between items-center mx-3 my-2 md:my-1 lg:my-2">
                     <p className="text-md font-bold text-black lg:mb-2 mobile:text-[14px]  ">

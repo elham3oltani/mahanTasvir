@@ -128,12 +128,9 @@ const RestorePass = () => {
                 placeholder="رمز عبور خود را تکرار کنید"
               />
             </div>
-            <button
-          
-          className="bg-blue-200 lg:w-96 w-64 text-white mx-auto rounded-full p-2 mt-4 mb-8"  
-        >
-          بازیابی رمز عبور
-        </button>
+            <button className="bg-blue-200 lg:w-96 w-64 text-white mx-auto rounded-full p-2 mt-4 mb-8">
+              بازیابی رمز عبور
+            </button>
           </form>
         </div>
       </div>

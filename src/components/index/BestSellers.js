@@ -4,7 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { CartContext } from "../../context/CartContextProvider.js";
 import { Navigation, A11y } from "swiper";
 import 'swiper/css/navigation';
-import { useMediaQuery } from "react-responsive";
 import {
   quantityCountBrand,
   IsInCartBrand,
@@ -19,9 +18,7 @@ const BestSellers = () => {
   const { state, dispatch } = useContext(CartContext);
   const products = useContext(ProductsContext);
   const productNew = products["proposal"];
-  const istablet = useMediaQuery({
-    query: "(min-width: 768px)",
-  });
+
   return (
     <>
       <div className="mt-8 flex flex-col justify-center items-center">
