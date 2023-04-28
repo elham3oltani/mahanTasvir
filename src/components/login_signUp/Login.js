@@ -4,7 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineAlternateEmail, MdOutlinePassword } from "react-icons/md";
 import axios from "axios";
-import logo from "../../images/logoo.png"
+import logo from "../../images/logoo.png";
 
 const Login = () => {
   let navigate = useNavigate();
@@ -19,34 +19,41 @@ const Login = () => {
     e.preventDefault();
     const data = { email, password };
     try {
-      const res = await axios.post("https://mahantasvir.ir/api/login", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(res);
-      if (res?.status === 200) {
+      const res = await axios.post(
+        "https://backend.mahantasvir.ir/api/login",
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (res?.status === 200 && token) {
         setIsLoggedin(true);
         setTimeout(() => {
           navigate("/");
-        }, 3000);
+        }, 1000);
       }
       setEmail("");
       setPass("");
     } catch (e) {
-      console.log(e.response);
       const { data } = e.response;
       setWarning(data);
     }
   };
   return (
     <div className="flex items-center h-auto justify-center my-16 mx-4">
-      <div className="lg:w-1/2 xl:w-1/3 md:w-1/2 w-full flex flex-col p-4 items-center border-2 border-blue-300  h-auto rounded-lg m-4">
-      <Link to="/" className="text-orange-600 w-[90px] h-[80px] mobile:text-xl text-3xl mt-2 text-center font-Nunito">
-            <img src={logo} alt="" />
-          </Link>
+      <div className="lg:w-1/2 2xl:w-1/3 xl:w-1/3 md:w-1/2 w-full flex flex-col p-4 items-center border-2 border-blue-300  h-auto rounded-lg m-4">
+        <Link
+          to="/"
+          className="text-orange-600 w-[90px] h-[80px] mobile:text-xl text-3xl mt-2 text-center font-Nunito"
+        >
+          <img src={logo} alt="" />
+        </Link>
 
-        <h1 className="font-bold text-xl m-3 text-blue-500">ورود به سایت ماهان تصویر</h1>
+        <h1 className="font-bold text-xl m-3 text-blue-500">
+          ورود به سایت ماهان تصویر
+        </h1>
         <p className="text-red text-right">{warn}</p>
         {!isLoggedin ? (
           <>
@@ -73,7 +80,7 @@ const Login = () => {
                 <input
                   value={password}
                   onChange={(e) => setPass(e.target.value)}
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="رمز عبور خود را وارد کنید"
                   className="py-2.5 text-sm pl-1 outline-none w-full rounded-full"
@@ -119,7 +126,7 @@ const Login = () => {
               </div>
             </form>
           </>
-        ) : [] (
+        ) : (
           <>
             <p className="text-green-500 text-md">
               ورود به سایت با موفقیت انجام شد

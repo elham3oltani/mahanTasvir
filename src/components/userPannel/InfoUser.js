@@ -5,14 +5,13 @@ const InfoUser = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const token = localStorage.getItem("token");
-  console.log(token);
   useEffect(() => {
     const infoHandler = async () => {
       if (localStorage.getItem("isActive")) {
         try {
           const {
             data: [name, email, phone],
-          } = await axios.get("https://mahantasvir.ir/edit-profile", {
+          } = await axios.get("https://backend.mahantasvir.ir/edit-profile", {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -21,15 +20,13 @@ const InfoUser = () => {
           setEmail(email);
           setName(name);
           setPhone(phone);
-        } catch (error) {
-          console.log(error.data);
-        }
+        } catch (error) {}
+      } else {
       }
     };
     infoHandler();
   }, []);
 
-  console.log(InfoUser);
   return (
     <div className="lg:w-5/6 w-full mx-auto">
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 justify-around text-right items-center lg:w-5/6 float-right md:mx-0 mx-4 my-4">

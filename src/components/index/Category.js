@@ -11,16 +11,20 @@ const Category = () => {
           محصولات ماهان تصویر
         </h1>
       </div>
-      <div className="lg:flex md:flex xl:flex items-center justify-evenly text-center w-full grid mobilel:grid-cols-3 grid-cols-2 mt-6">
+      <div className="lg:flex md:flex xl:flex items-center justify-evenly text-center w-full grid mobilel:grid-cols-3 grid-cols-3 mt-6">
         {items?.map((navItems) => (
           <Link
             key={navItems.id}
             to={`/product/${navItems.slug}`}
             className="cursor-pointer flex flex-col items-center my-3"
           >
-            <img src={navItems.files} alt={navItems.title} className="w-[70px] h-[65px]" />
-            <span className="text-sm  text-blue-300 my-2 py-0.5 px-2 rounded-sm">
-              {navItems.title}
+            <img
+              src={navItems.files}
+              alt={navItems.title}
+              className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] xl:w-[120px] xl:h-[120px] 2xl:w-[120px] 2xl:h-[120px] object-fit"
+            />
+            <span className="text-sm text-black my-2 py-0.5 px-2 font-bold rounded-sm">
+              {navItems?.title}
             </span>
           </Link>
         ))}

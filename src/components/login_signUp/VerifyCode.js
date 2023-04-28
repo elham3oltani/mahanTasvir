@@ -15,7 +15,7 @@ const VerifyCode = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://mahantasvir.ir/api/email/verify",
+        "https://backend.mahantasvir.ir/api/email/verify",
         {
           verify_code: parseInt(verify),
         },
@@ -30,26 +30,21 @@ const VerifyCode = () => {
           navigate("/");
         }, 2000);
       }
-      if (res?.status === 200) {
-        setWarn("کد وارد شده معتبر نمی باشد");
-      }
+
       setMessage(res?.data.message);
-      console.log(res?.data.message);
+
       setIsActive(true);
-      console.log(res);
     } catch (e) {
-      console.log(e.response);
-      console.log(e.response?.data.errors.verify_code[0]);
       setErr(e.response?.data?.errors?.verify_code[0]);
     }
     setVerify("");
   };
-  console.log(warn);
+
   const resntHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://mahantasvir.ir/api/email/resend",
+        "https://backend.mahantasvir.ir/api/email/resend",
         {
           verify_code: parseInt(verify),
         },
@@ -59,26 +54,20 @@ const VerifyCode = () => {
           },
         }
       );
-      console.log(res);
+
       if (res?.data.status === 200) {
         setTimeout(() => {
           navigate("/");
         }, 2000);
       }
-      console.log(res);
-      console.log(res?.data);
+
       setMessageRes(res?.data);
-    } catch (e) {
-      console.log(e.response);
-    }
+    } catch (e) {}
   };
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="lg:w-[40%] w-full mx-3 md:w-[45%] xl:w-[30%] rounded-lg border-2 border-blue-200 h-auto max-h-[500px] flex flex-col justify-center">
-        <Link to="/" className="text-center font-Nunito mt-4 text-orange-700">
-          Mahan Tasvir
-        </Link>
-        <h2 className="text-center text-lg font-bold my-4">
+      <div className="lg:w-[40%] 2xl:w-[35%] w-full mx-3 md:w-[45%] xl:w-[30%] rounded-lg border-2 border-blue-200 h-auto max-h-[500px] flex flex-col justify-center">
+        <h2 className="text-center text-lg font-bold mt-2 mb-4">
           کد ارسال شده به ایمیل خود را وارد کنید
         </h2>
         <div className="text-center ">
@@ -100,7 +89,7 @@ const VerifyCode = () => {
           </div>
           <div className="flex justify-center">
             <button
-              className={`bg-blue-200 lg:w-80 w-64 text-white rounded-full p-2 mt-4 mb-8 ${
+              className={`bg-blue-200 lg:w-80 w-64 text-white rounded-full p-2 mt-1 mb-6 ${
                 isActive ? "bg-transparent text-white" : ""
               }`}
               type="submit"

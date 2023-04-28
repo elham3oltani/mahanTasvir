@@ -7,7 +7,8 @@ import {
   quantityCountSuggest,
   numberWithComma,
 } from "../../helper/function";
-import 'swiper/css/navigation';
+import { useMediaQuery } from "react-responsive";
+import "swiper/css/navigation";
 import { CartContext } from "../../context/CartContextProvider.js";
 import { ProductsContext } from "../../context/ProductContextProvider.js";
 import { A11y, Navigation } from "swiper";
@@ -20,16 +21,18 @@ const SuggestedProducts = () => {
   const { state, dispatch } = useContext(CartContext);
   const products = useContext(ProductsContext);
   const proposal = products["productNew"];
+  const isPhone = useMediaQuery({
+    query: "(min-width: 428px)",
+  });
   return (
     <>
-       <div className="mt-8 flex flex-col justify-center items-center">
+      <div className="mt-8 flex flex-col justify-center items-center">
         <h1 className="text-[25px] font-bold border-b mx-4 border-orange-500 text-blue-500 mr-1">
           محصولات پیشنهادی
         </h1>
       </div>
 
       <div className="my-10 mx-4 relative">
-     
         <Swiper
           modules={[A11y, Navigation]}
           breakpoints={{
@@ -59,9 +62,13 @@ const SuggestedProducts = () => {
               spaceBetween: 15,
               slidesPerView: 5,
             },
+            1440: {
+              spaceBetween: 15,
+              slidesPerView: 5,
+            },
           }}
           scrollbar={{ draggable: true }}
-          navigation={true}
+          navigation={isPhone ? false : true}
           spaceBetween={30}
           slidesPerView={4}
         >
@@ -164,7 +171,6 @@ const SuggestedProducts = () => {
           ) : (
             <ImSpinner6 size={30} className="animate-spin mx-auto" />
           )}
-        
         </Swiper>
       </div>
     </>

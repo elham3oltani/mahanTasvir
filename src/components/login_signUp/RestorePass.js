@@ -33,7 +33,7 @@ const RestorePass = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://mahantasvir.ir/api/password/change",
+        "https://backend.mahantasvir.ir/api/password/change",
         data
       );
       if (res?.status === 200) {
@@ -41,14 +41,11 @@ const RestorePass = () => {
           navigate("/");
         }, 2000);
       }
-      console.log(res);
       setMessage(res?.data);
-      console.log(res?.status);
     } catch (error) {
       if (error.response.status === 422) {
         setErr("تغییر رمز شما انجام نشد مجددا تلاش کنید");
       }
-      console.log(error.response.status);
     }
   };
   return (

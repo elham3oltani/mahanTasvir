@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { AiFillStar } from "react-icons/ai";
 
 const Rate = ({ count, rating, color, onRating }) => {
-  const [hoverRating, setHoverRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(3);
 
   const getColor = (index) => {
     if (hoverRating >= index) {

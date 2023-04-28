@@ -6,7 +6,7 @@ import {
   quantityCountAccesso,
   numberWithComma,
 } from "../../helper/function";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 import { CartContext } from "../../context/CartContextProvider.js";
 import { ProductsContext } from "../../context/ProductContextProvider.js";
 import { ImSpinner6 } from "react-icons/im";
@@ -14,12 +14,16 @@ import { HiPlus, HiMinus } from "react-icons/hi";
 import "swiper/css";
 import "../../App.css";
 import { TbShoppingCartPlus, TbTrashX } from "react-icons/tb";
+import { useMediaQuery } from "react-responsive";
 import { A11y, Navigation } from "swiper";
 import { Link } from "react-router-dom";
 const ProductAccessories = () => {
   const { state, dispatch } = useContext(CartContext);
   const products = useContext(ProductsContext);
   const accessories = products["janebi"];
+  const isPhone = useMediaQuery({
+    query: "(min-width: 425px)",
+  });
   return (
     <>
       <div className="mt-8 flex flex-col justify-center items-center">
@@ -56,10 +60,14 @@ const ProductAccessories = () => {
             },
             1280: {
               spaceBetween: 15,
+              slidesPerView: 4,
+            },
+            1440: {
+              spaceBetween: 15,
               slidesPerView: 5,
             },
           }}
-          navigation={true}
+          navigation={isPhone ? false : true}
           scrollbar={{ draggable: true }}
           spaceBetween={30}
           slidesPerView={5}

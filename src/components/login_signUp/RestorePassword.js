@@ -11,7 +11,7 @@ const RestorePassword = () => {
     e.preventDefault();
     try {
       const res = await axios.get(
-        "https://mahantasvir.ir/api/password/reset/send",
+        "https://backend.mahantasvir.ir/api/password/reset/send",
         {
           params: {
             email: emailCode,
@@ -24,22 +24,16 @@ const RestorePassword = () => {
           navigate("/verify_Code");
         }, 2000);
       }
-      console.log(res);
-      console.log(emailCode);
     } catch (e) {
       setErr(e?.response?.data?.errors.email[0]);
-      console.log(e?.response?.data?.errors.email[0]);
-      console.log(e.response);
     }
   };
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="lg:w-[40%] w-full mx-3 md:w-[45%] xl:w-[30%] rounded-lg border-2 border-blue-200 h-auto max-h-[500px] flex flex-col justify-center">
-        <Link to="/" className="text-center font-Nunito mt-4 text-orange-700">
-          Mahan Tasvir
-        </Link>
-
-        <h2 className="text-center text-lg font-bold my-4">بازیابی رمز عبور</h2>
+        <h2 className="text-center text-lg font-bold mb-2 mt-4">
+          بازیابی رمز عبور
+        </h2>
         <div className="text-center">
           <p className="text-green-500">{message}</p>
           <p className="text-red">{err}</p>
@@ -55,7 +49,7 @@ const RestorePassword = () => {
         </div>
         <button
           onClick={forgetPassHandler}
-          className="bg-blue-200 lg:w-80 w-64 text-white mx-auto rounded-full p-2 mt-4 mb-8"
+          className="bg-blue-200 lg:w-80 w-64 text-white mx-auto rounded-full p-2 mt-1 mb-6"
           type="submit"
         >
           بازیابی رمز عبور

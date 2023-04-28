@@ -3,12 +3,13 @@ import { ProductsContext } from "../../context/ProductContextProvider.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { CartContext } from "../../context/CartContextProvider.js";
 import { Navigation, A11y } from "swiper";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 import {
   quantityCountBrand,
   IsInCartBrand,
   numberWithComma,
 } from "../../helper/function";
+import { useMediaQuery } from "react-responsive";
 import { ImSpinner6 } from "react-icons/im";
 import { HiPlus, HiMinus } from "react-icons/hi";
 import StarRate from "../StarRate";
@@ -18,7 +19,9 @@ const BestSellers = () => {
   const { state, dispatch } = useContext(CartContext);
   const products = useContext(ProductsContext);
   const productNew = products["proposal"];
-
+  const isPhone = useMediaQuery({
+    query: "(min-width: 425px)",
+  });
   return (
     <>
       <div className="mt-8 flex flex-col justify-center items-center">
@@ -54,11 +57,15 @@ const BestSellers = () => {
             },
             1280: {
               spaceBetween: 15,
+              slidesPerView: 4,
+            },
+            1440: {
+              spaceBetween: 15,
               slidesPerView: 5,
             },
           }}
           scrollbar={{ draggable: true }}
-          navigation={true}
+          navigation={isPhone ? false : true}
           zoom={true}
           spaceBetween={30}
           slidesPerView={4}
@@ -69,7 +76,7 @@ const BestSellers = () => {
                 key={product.id}
                 className="max-h-[360px] border-silver bg-white relative border h-[360px] rounded-lg hover:shadow-2xl py-4 "
               >
-                <div className="flex flex-col lg:py-3  ">
+                <div className="flex flex-col lg:py-3">
                   <img
                     src={product.files}
                     alt="cctv camera"

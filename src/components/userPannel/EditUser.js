@@ -33,7 +33,6 @@ const EditUser = () => {
       setPassword_confirmation("");
     } catch (e) {
       const { data } = e.response;
-      console.log(data);
     }
   };
 
@@ -92,7 +91,7 @@ const EditUser = () => {
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="text"
+            type="password"
             placeholder=""
             className="border border-silver py-2 outline-none text-right rounded-lg pr-4"
           />
@@ -106,7 +105,7 @@ const EditUser = () => {
           <input
             value={password_confirmation}
             onChange={(e) => setPassword_confirmation(e.target.value)}
-            type="text"
+            type="password"
             placeholder=""
             className="border border-silver py-2 outline-none text-right rounded-lg pr-4"
           />

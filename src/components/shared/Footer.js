@@ -18,7 +18,7 @@ const Footer = () => {
   const NavItem = products[2];
   return (
     <>
-      <div className="w-full grid lg:flex justify-evenly lg:flex-row-reverse text-white bg-black-50 lg:h-[290px] h-auto">
+      <div className="w-full grid lg:flex 2xl:text-md justify-evenly lg:flex-row-reverse text-white bg-black-50 lg:h-[290px] h-auto">
         <div className="">
           <h1 className="text-[21px] text-center my-6 text-orange-500">
             ارتباط با ما
@@ -41,7 +41,8 @@ const Footer = () => {
           </div>
 
           <div className="flex lg:justify-end justify-center my-4 items-center mr-1">
-            <span className="mr-1">ساعت ۹ صبح الی ۱۳:۳۰</span>
+            <span className="mr-3">عصرها 16 الی 20</span>{" "}
+            <span className="mr-1">ساعت 9 صبح الی 13:30</span>
             <MdOutlineAccessTime size={25} className="text-blue-50" />
           </div>
 
@@ -57,7 +58,10 @@ const Footer = () => {
           </h1>
           <ul className="text-center">
             {NavItem?.map((item) => (
-              <li key={item.id} className=" flex items-center lg:justify-end my-3 justify-center mr-1">
+              <li
+                key={item.id}
+                className=" flex items-center lg:justify-end my-3 justify-center mr-1"
+              >
                 <Link
                   className="mr-1"
                   key={item.id}

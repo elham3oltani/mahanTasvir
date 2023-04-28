@@ -11,30 +11,29 @@ import axios from "axios";
 const UserPannel = () => {
   const { pathname } = useLocation();
   const token = localStorage.getItem("token");
-  console.log(pathname);
   const navigate = useNavigate();
 
-useEffect(()=>{
-  const dashboardHandler = async () => {
-    if (localStorage.getItem("isActive")) {
-      try {
-        const res = await axios.get("https://mahantasvir.ir/panel/user", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log({ res });
-      } catch (e) {
-        console.log(e.response);
+  useEffect(() => {
+    const dashboardHandler = async () => {
+      if (localStorage.getItem("isActive")) {
+        try {
+          const res = await axios.get(
+            "https://backend.mahantasvir.ir/panel/user",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+        } catch (e) {}
+      } else {
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
       }
-    } else {
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
-    }
-  };
-  dashboardHandler()
-})
+    };
+    dashboardHandler();
+  });
   let userName = localStorage.getItem("info");
 
   return (
@@ -47,7 +46,11 @@ useEffect(()=>{
               <FaUser />
               <h3 className="px-1 font-Quicksand mr-1.5">
                 {" "}
-                {JSON.parse(userName) ? JSON.parse(userName) : <p className="text-sm">نام کاربری</p> }
+                {JSON.parse(userName) ? (
+                  JSON.parse(userName)
+                ) : (
+                  <p className="text-sm">نام کاربری</p>
+                )}
               </h3>
             </div>
             <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 lg:flex flex-col text-sm">
@@ -77,12 +80,7 @@ useEffect(()=>{
               <li className="bg-blue-10 px-2 py-3 overflow-hidden rounded-md flex items-center flex-row-reverse cursor-pointer">
                 <FaUserEdit className="px-1 text-purple-50" size={30} />
 
-                <Link
-                  to="edit-account"
-                 
-                >
-                  ویرایش اطلاعات کاربر
-                </Link>
+                <Link to="edit-account">ویرایش اطلاعات کاربر</Link>
               </li>
             </ul>
           </div>

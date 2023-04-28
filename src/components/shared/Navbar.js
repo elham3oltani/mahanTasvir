@@ -12,7 +12,7 @@ import { HiMenu } from "react-icons/hi";
 import { ProductsContext } from "../../context/ProductContextProvider.js";
 import { CartContext } from "../../context/CartContextProvider";
 const Navbar = ({ styleOnBanner }) => {
-  const [nav, setNav] = useState(true);
+  const [nav, setNav] = useState(false);
   const [pannel, setPannel] = useState(false);
   let { state } = useContext(CartContext);
   const { pathname } = useLocation();
@@ -23,14 +23,6 @@ const Navbar = ({ styleOnBanner }) => {
     setNav(!nav);
   };
 
-  useEffect(
-    () => {
-      setNav(!nav);
-    },
-    [pathname],
-    [!nav]
-  );
-
   useEffect(() => {});
   const products = useContext(ProductsContext);
   const navbarItems = products[2];
@@ -40,17 +32,21 @@ const Navbar = ({ styleOnBanner }) => {
   let userName = localStorage.getItem("info");
   let isActive = localStorage.getItem("isActive");
 
+  useEffect(() => {
+    setNav(false);
+  }, [pathname]);
+
   return (
     <>
       <div
         className={`${
           styleOnBanner
-            ? "lg:h-[400px] xl:h-[600px] w-full text-white lg:bg-black lg:bg-gradient-to-b xl:from-black lg:from-black md:from-black md:to-transparent lg:to-transparent xl:to-transparent lg:bg-opacity-0 xl:bg-opacity-0 lg:absolute z-10"
+            ? "lg:h-[400px] xl:h-[600px] 2xl:h-[600px]  w-full text-white lg:bg-black lg:bg-gradient-to-b 2xl:from-black xl:from-black lg:from-black md:from-black md:to-transparent lg:to-transparent xl:to-transparent lg:bg-opacity-0 xl:bg-opacity-0 lg:absolute z-10"
             : "lg:text-black shadow-md mx-2 rounded-lg"
         }`}
       >
         {/* navbar in web */}
-        <div className="max-w-[1640px] w-full shadow-lg flex items-center h-auto lg:justify-around mx-auto lg:border-b box-border relative border-gray xl:py-2 lg:py-2">
+        <div className="w-full xl:text-lg 2xl:text-lg shadow-lg flex items-center h-auto lg:justify-around mx-auto lg:border-b box-border relative border-gray xl:py-2 lg:py-2">
           <div className="lg:flex xl:flex hidden items-center justify-between">
             <div className="pr-2 relative">
               <Link to="/shopcart">
@@ -60,7 +56,7 @@ const Navbar = ({ styleOnBanner }) => {
                 </span>
               </Link>
             </div>
-            {!!isActive ? (
+            {!isActive ? (
               <div>
                 <div className="rounded-full border-white-full border mx-4 lg:text-[16px] text-[14px] flex items-center p-1 lg:p-1">
                   <span
@@ -111,7 +107,11 @@ const Navbar = ({ styleOnBanner }) => {
                       >
                         <IoIosArrowBack />
                         <span className="mr-1.5 font-Quicksand text-[16px] truncate">
-                          {JSON.parse(userName) ? JSON.parse(userName) : <p className="text-sm">نام کاربری</p> } 
+                          {JSON.parse(userName) ? (
+                            JSON.parse(userName)
+                          ) : (
+                            <p className="text-sm">نام کاربری</p>
+                          )}
                         </span>
                       </Link>
                     </li>
@@ -164,18 +164,17 @@ const Navbar = ({ styleOnBanner }) => {
               <li className="mx-4">
                 <Link to="/contact-us">تماس با ما</Link>
               </li>
-              {navbarItems
-                ? navbarItems.map((items) => (
-                    <li className="mx-4" key={items.id}>
-                      <Link to={`/product/${items.slug}`} className="">
-                        {items.title}
-                      </Link>
-                    </li>
-                  ))
-                : 
+              {navbarItems ? (
+                navbarItems.map((items) => (
+                  <li className="mx-4" key={items.id}>
+                    <Link to={`/product/${items.slug}`} className="">
+                      {items.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
                 <ImSpinner6 size={30} className="animate-spin mx-auto" />
-
-                }
+              )}
             </ul>
           </div>
           <div className="text-orange-500 hidden lg:flex">
@@ -232,19 +231,18 @@ const Navbar = ({ styleOnBanner }) => {
           </div>
           <nav className="">
             <ul className="flex flex-col relative text-right top-1">
-              {navbarItems
-                ? navbarItems.map((item) => (
-                    <li
-                      key={item.id}
-                      className="my-2 flex items-center justify-end ease-in-out duration-200 delay-100 hover:shadow-lg py-1.5 mx-2 rounded-md px-1"
-                    >
-                      <Link to={`/product/${item.slug}`}>{item.title}</Link>
-                    </li>
-                  ))
-                : 
+              {navbarItems ? (
+                navbarItems.map((item) => (
+                  <li
+                    key={item.id}
+                    className="my-2 flex items-center justify-end ease-in-out duration-200 delay-100 hover:shadow-lg py-1.5 mx-2 rounded-md px-1"
+                  >
+                    <Link to={`/product/${item.slug}`}>{item.title}</Link>
+                  </li>
+                ))
+              ) : (
                 <ImSpinner6 size={30} className="animate-spin mx-auto" />
-
-                }
+              )}
 
               <li className="flex items-center justify-end my-2  ease-in-out duration-200 delay-100 hover:shadow-lg py-1.5 mx-2 rounded-md px-1">
                 <Link to="/AboutUs">درباره ما</Link>

@@ -12,6 +12,10 @@ const IsInCartProduct = (state, id) => {
   const result = !!state.selectedItemsProduct.find((item) => item.id === id);
   return result;
 };
+const IsInCartProductDet = (state, id) => {
+  const result = !!state.selectedProDetail.find((item) => item.id === id);
+  return result;
+};
 
 
 const IsInCartAccesso = (state, id) => {
@@ -57,4 +61,4 @@ const numberWithComma = (number) => {
   return parse.toLocaleString();
 };
 
-export { shortText,IsInCartProduct, IsInCartSuggest,IsInCartAccesso,quantityCountAccesso, quantityCountSuggest,quantityCountBrand, IsInCartBrand, numberWithComma };
+export { shortText,IsInCartProduct,IsInCartProductDet, IsInCartSuggest,IsInCartAccesso,quantityCountAccesso, quantityCountSuggest,quantityCountBrand, IsInCartBrand, numberWithComma };

@@ -24,7 +24,7 @@ const Dashboard = () => {
         </div>
         <div className="flex justify-center flex-col lg:flex-row-reverse w-64 items-center">
           <img
-          alt="completedOrders"
+            alt="completedOrders"
             src={completedOrders}
             className="lg:w-[64px] lg:h-[64px] w-[56px] h-[56px]"
           />
@@ -39,7 +39,7 @@ const Dashboard = () => {
         </div>
         <div className="flex justify-center flex-col lg:flex-row-reverse w-64 items-center mx-4">
           <img
-          alt="returnOrder"
+            alt="returnOrder"
             src={returnOrder}
             className="g:w-[64px] lg:h-[64px] w-[56px] h-[56px]"
           />

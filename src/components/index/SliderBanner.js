@@ -32,23 +32,21 @@ const SliderBanner = () => {
         autoPlaySpeed={4000}
         responsive={responsive}
         removeArrowOnDeviceType={["mobile", "tablet"]}
-        className="w-full md:h-[400px] xl:h-[600px] lg:h-[600px] object-cover h-[220px]"
+        className="w-full md:h-[400px] xl:h-[600px] 2xl:h-[600px] lg:h-[600px] object-cover h-[270px]"
         arrows={true}
       >
-        {banners ? (
-          banners.map((banner) => (
-            <div className="w-full" key={banner.id}>
-              <img
-                key={banners.id}
-                alt={banner.name}
-                src={banner.files}
-                className="w-full md:h-[600px] xl:h-[600px] lg:h-[600px] h-[250px] object-cover"
-              />
-            </div>
-          ))
-        ) : (
-          []
-        )}
+        {banners
+          ? banners.map((banner) => (
+              <div className="w-full" key={banner.id}>
+                <img
+                  key={banners.id}
+                  alt={banner.name}
+                  src={banner.files}
+                  className="w-full md:h-[600px] 2xl:h-[600px] xl:h-[600px] lg:h-[600px] h-[270px] object-fill"
+                />
+              </div>
+            ))
+          : []}
       </Carousel>
     </>
   );

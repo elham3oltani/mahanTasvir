@@ -2,11 +2,8 @@ import React, { useState, createContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
-import logo from "../../images/logoo.png"
-import {
-  AiOutlineUserAdd,
-  AiOutlineNumber,
-} from "react-icons/ai";
+import logo from "../../images/logoo.png";
+import { AiOutlineUserAdd, AiOutlineNumber } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
 import { MdOutlineAlternateEmail, MdOutlinePassword } from "react-icons/md";
 export const AuthContext = createContext();
@@ -22,28 +19,26 @@ const SignUp = () => {
   const postHandler = async (e) => {
     e.preventDefault();
     let data = { name, mobile, email, password, password_confirmation };
-    console.log(data);
     try {
-      const res = await axios.post("https://mahantasvir.ir/api/register", data);
-      console.log(res);
+      const res = await axios.post(
+        "https://backend.mahantasvir.ir/api/register",
+        data
+      );
       setRes(res?.data?.message);
       localStorage.setItem("token", res?.data?.token);
-      localStorage.setItem("info",JSON.stringify(data.name))
+      localStorage.setItem("info", JSON.stringify(data.name));
 
-      console.log(res?.data.token);
       if (res?.data.message) {
         setTimeout(() => {
           navigate("/verify_code");
-        }, 3000);
+        }, 2000);
       }
-    }
-     catch (e) {
+    } catch (e) {
       const { data } = e.response;
       setError(data);
     }
   };
-  console.log(error);
-  console.log(res);
+
   const [meterMob, setMeterMob] = useState(false);
   const [meterEmial, setMeterEmail] = useState(false);
   const [meterPass, setMeterPass] = useState(false);
@@ -76,8 +71,11 @@ const SignUp = () => {
   return (
     <>
       <div className="flex items-center w-full justify-center mx-auto lg:my-4 my-8 px-2">
-        <div className="lg:w-1/2 md:w-2/3 xl:w-1/3 w-full flex flex-col p-4 items-center border-2 border-blue-300 h-auto rounded-md m-2">
-          <Link to="/" className="text-orange-600 w-[90px] h-[80px] mobile:text-xl text-3xl mt-2 text-center font-Nunito">
+        <div className="lg:w-1/2 md:w-2/3 2xl:w-1/3 xl:w-1/3 w-full flex flex-col p-4 items-center border-2 border-blue-300 h-auto rounded-md m-2">
+          <Link
+            to="/"
+            className="text-orange-600 w-[90px] h-[80px] mobile:text-xl text-3xl mt-2 text-center font-Nunito"
+          >
             <img src={logo} alt="" />
           </Link>
           <Link className="font-bold lg:text-xl text-lg text-center m-4 text-blue-500">
@@ -88,7 +86,7 @@ const SignUp = () => {
           ) : (
             <h1 className="text-right text-red">{error}</h1>
           )}
-          <form onSubmit={postHandler} >
+          <form onSubmit={postHandler}>
             <div className="my-6 mx-auto">
               <div className="flex items-center w-full border border-orange-600 rounded-full ">
                 <AiOutlineUserAdd
@@ -217,7 +215,7 @@ const SignUp = () => {
 
             <div className="flex justify-center items-center rounded-full">
               <IoIosArrowBack className="text-white" />
-              <Link to="/home">بازگشت به سایت</Link>
+              <Link to="/">بازگشت به سایت</Link>
             </div>
           </form>
         </div>
