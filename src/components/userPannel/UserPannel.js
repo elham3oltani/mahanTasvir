@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { FaUserEdit } from "react-icons/fa";
 import { RiShoppingBasket2Line } from "react-icons/ri";
@@ -9,7 +9,6 @@ import { GrContactInfo } from "react-icons/gr";
 import Navbar from "../shared/Navbar";
 import axios from "axios";
 const UserPannel = () => {
-  const { pathname } = useLocation();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -57,7 +56,7 @@ const UserPannel = () => {
               <li className=" bg-blue-10 px-2 py-3 rounded-md flex items-center flex-row-reverse cursor-pointer">
                 <RxDashboard className="px-1 text-green-500" size={30} />
 
-                <Link to="dashboard">پیشخوان</Link>
+                <Link className="w-full" to="dashboard">پیشخوان</Link>
               </li>
 
               <li className="bg-blue-10 px-2 py-3 rounded-md flex items-center flex-row-reverse cursor-pointer">
@@ -65,12 +64,12 @@ const UserPannel = () => {
                   className="px-1 text-orange-500"
                   size={30}
                 />
-                <Link to="myOrders">سفارش ها</Link>
+                <Link className="w-full"  to="myOrders">سفارش ها</Link>
               </li>
 
               <li className="bg-blue-10 px-2 py-3 rounded-md flex items-center flex-row-reverse cursor-pointer">
                 <GrContactInfo className="px-1 text-purple-100" size={30} />
-                <Link to="info-account"> اطلاعات کاربری</Link>
+                <Link className="w-full"  to="info-account"> اطلاعات کاربری</Link>
               </li>
 
               <li className="bg-blue-10 px-2 py-3 rounded-md flex items-center flex-row-reverse cursor-pointer">
@@ -80,7 +79,10 @@ const UserPannel = () => {
               <li className="bg-blue-10 px-2 py-3 overflow-hidden rounded-md flex items-center flex-row-reverse cursor-pointer">
                 <FaUserEdit className="px-1 text-purple-50" size={30} />
 
-                <Link to="edit-account">ویرایش اطلاعات کاربر</Link>
+                <Link className="w-full"  to="edit-account">ویرایش اطلاعات کاربر</Link>
+              </li>
+              <li className="bg-blue-10 px-2 py-3 overflow-hidden rounded-md flex items-center flex-row-reverse cursor-pointer">
+                <Link className="w-full pr-3"  to="/">صفحه اصلی</Link>
               </li>
             </ul>
           </div>

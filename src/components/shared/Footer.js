@@ -96,7 +96,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full h-auto text-right flex flex-col justify-center items-center md:flex-row-reverse lg:flex-row-reverse md:justify-between lg:justify-between bg-orange-500  ">
-        <p className="lg:text-[16px] mr-4 text-white py-3">
+        <p className="lg:text-[16px] mx-4 text-white py-3">
           کلیه ی حقوق مادی و معنوی متعلق به فروشگاه ماهان تصویر بوده و برای این
           سایت محفوظ میباشد
         </p>

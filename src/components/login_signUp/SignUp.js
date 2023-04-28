@@ -9,6 +9,8 @@ import { MdOutlineAlternateEmail, MdOutlinePassword } from "react-icons/md";
 export const AuthContext = createContext();
 const SignUp = () => {
   let navigate = useNavigate();
+  const [isLoggin,setIsLoggin]=useState(false)
+  localStorage.setItem("isLogin", isLoggin);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -27,8 +29,9 @@ const SignUp = () => {
       setRes(res?.data?.message);
       localStorage.setItem("token", res?.data?.token);
       localStorage.setItem("info", JSON.stringify(data.name));
-
+       
       if (res?.data.message) {
+        setIsLoggin(true)
         setTimeout(() => {
           navigate("/verify_code");
         }, 2000);
@@ -38,7 +41,6 @@ const SignUp = () => {
       setError(data);
     }
   };
-
   const [meterMob, setMeterMob] = useState(false);
   const [meterEmial, setMeterEmail] = useState(false);
   const [meterPass, setMeterPass] = useState(false);

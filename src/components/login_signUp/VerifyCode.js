@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const VerifyCode = () => {
   const [verify, setVerify] = useState("");
   const [isActive, setIsActive] = useState(false);
   const [message, setMessage] = useState("");
   const [err, setErr] = useState("");
-  const [warn, setWarn] = useState("");
   const [messageRes, setMessageRes] = useState("");
   const token = localStorage.getItem("token");
 
@@ -67,18 +66,17 @@ const VerifyCode = () => {
   return (
     <div className="h-screen flex items-center justify-center">
       <div className="lg:w-[40%] 2xl:w-[35%] w-full mx-3 md:w-[45%] xl:w-[30%] rounded-lg border-2 border-blue-200 h-auto max-h-[500px] flex flex-col justify-center">
-        <h2 className="text-center text-lg font-bold mt-2 mb-4">
+        <h2 className="text-center text-lg font-bold mt-8 mb-4">
           کد ارسال شده به ایمیل خود را وارد کنید
         </h2>
         <div className="text-center ">
           <p className="text-red">{err}</p>
-          <p className="text-red">{warn}</p>
           <p className="text-green-500">{message}</p>
           <p className="text-green-500">{messageRes}</p>
         </div>
         <form onSubmit={verifyHandler}>
-          <div className="my-6 lg:w-80 flex flex-col justify-center mx-auto">
-            <label className="mr-4 mb-1 text-right">کد 6 رقمی</label>
+          <div className="my-6 w-64 lg:w-80 flex flex-col justify-center mx-auto">
+            <label className="w-full pr-3 mb-1 text-right">کد 6 رقمی</label>
             <input
               type="text"
               name="verify_code"

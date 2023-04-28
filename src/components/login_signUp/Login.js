@@ -28,12 +28,18 @@ const Login = () => {
           },
         }
       );
-      if (res?.status === 200 && token) {
+      if (res?.status === 200 ) {
         setIsLoggedin(true);
         setTimeout(() => {
-          navigate("/");
+          navigate("/my-account/info-account");
+          window.location.reload(true)
         }, 1000);
       }
+else{
+  localStorage.clear()
+  navigate("/signup")
+}
+    
       setEmail("");
       setPass("");
     } catch (e) {

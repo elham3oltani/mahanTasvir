@@ -56,7 +56,7 @@ const Products = () => {
   return (
     <>
       <Navbar />
-      <div className="lg:flex-row flex-col-reverse mx-3 mt-10 flex">
+      <div className="lg:flex-row flex-col-reverse mx-3 mb-[80px] mt-16 flex">
         <div className="lg:flex-row xl:flex-row flex justify-center items-start my-6 xl:mx-4 xl:w-[80%] 2xl:w-[80%] lg:w-[80%]">
           <div className="w-full grid xl:grid-cols-4  lg:grid-cols-3 grid-cols-2 gap-2 mobilem:gap-3 md:grid-cols-3 overflow-hidden">
             {products

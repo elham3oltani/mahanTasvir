@@ -4,7 +4,6 @@ import { useMediaQuery } from "react-responsive";
 import { Carousel } from "react-carousel-minimal";
 import { Link, useLocation, useParams } from "react-router-dom";
 import Introduction from "./Introduction";
-import notImage from "../../images/notimage.png";
 import ProductSpec from "./ProductSpec";
 import { MdEventAvailable, MdPriceCheck } from "react-icons/md";
 import { AiOutlineFileProtect } from "react-icons/ai";
@@ -53,7 +52,7 @@ const DetailProduct = () => {
     const getFiles = { image: image?.files };
     return getFiles || {};
   });
-
+console.log(productDet)
   return (
     <>
       <Navbar />
@@ -61,12 +60,10 @@ const DetailProduct = () => {
         productDet.map((item) => (
           <div
             key={item.id}
-            className="flex w-full lg:flex-row-reverse xl:flex-row-reverse flex-col mt-20
-           md:my-6 lg:my-6 items-center px-4 box-border relative"
+            className="flex w-full lg:flex-row-reverse px-4 xl:flex-row-reverse flex-col mt-20
+           md:my-6 lg:my-6 items-center box-border relative"
           >
-            <h1 className="text-orange-500">{item?.product_image.files}</h1>
-
-            <div className="w-full md:w-[300px] mobilel:w-[350px]  2xl:w-[400px] xl:w-[400px] lg:w-[400px] h-auto p-4 py-2 mt-4">
+            <div className="w-full md:w-[300px] mobilel:w-[350px]  2xl:w-[400px] xl:w-[400px] lg:w-[400px] h-auto p-4 py-2 mt-2">
               {data.length > 0 ? (
                 <Carousel
                   className="mx-auto max-w-[550px] max-h-[400px]"
@@ -90,15 +87,16 @@ const DetailProduct = () => {
               ) : (
                 <div>
                   <img
-                    className="w-full max-h-[400px] h-[300px]"
-                    src={notImage}
+                    className="w-full max-h-[360px] h-[260px]"
+                    src={item?.files}
+                    alt={item.name}
                   />
                 </div>
               )}
             </div>
             <div
               name="detailProduct"
-              className="lg:w-1/3 w-full md:w-full px-4 mx-8 mb-6 box-border"
+              className="lg:w-1/3 w-full md:w-full mx-8 mb-6 box-border"
             >
               <div className="mt-4">
                 <p className="font-bold text-blue-full font-Quicksand text-right ">
@@ -147,7 +145,7 @@ const DetailProduct = () => {
               </div>
             </div>
 
-            <div className="lg:w-1/4 w-full flex flex-col items-end justify-end mx-4 px-4 mb-8 rounded-md border-orange-500 border">
+            <div className="lg:w-1/4 xl:w-1/4 2xl:w-1/4  w-full flex flex-col items-end justify-end mx-8 px-4 mb-8 rounded-md border-orange-500 border">
               <div className="flex border-b w-full flex-row-reverse justify-between items-center">
                 <p className="py-1.5">اطلاعات محصول</p>
               </div>

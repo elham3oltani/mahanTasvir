@@ -1,5 +1,5 @@
 import React from 'react';
-import not from "../images/not.svg"
+import not from "../images/404not.svg"
 const NotFound = () => {
     return (
         <div>
